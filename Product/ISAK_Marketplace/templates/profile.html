@@ -1,0 +1,200 @@
+{% extends "base.html" %}
+
+{% block title %} Profile page | ISAK Marketplace {% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="static/styles.css">{% endblock %}
+
+{% block content %}
+
+<div class="profile-page">
+
+    <h1>Profile page</h1>
+    <div class="profile-info-block">
+        <div class="profile-info-text">
+            Name: {{ current_user.g_name }}
+            <br>
+            Email: {{ current_user.g_email }}
+        </div>
+        <div class="profile-img">
+            <img src="{{ current_user.g_picture }}">
+        </div>
+    </div>
+
+    <div class="display-selection">
+        <button id="enable-posts-btn" onclick="enablePosts()">Posts</button>
+        <button id="enable-transactions-btn" onclick="enableTransactions()">Transactions</button>
+    </div>
+
+
+    <div class="post-container">
+        <h1>Your posts:</h1>
+        {% if current_user_items %}
+        <div class="user-posts">
+
+            {% for item in current_user_items %}
+            <div class="item">
+
+                <div class="item-text">
+
+                    {% if item.quantity == 0 %}
+                    <h1 id="sold-out"><span style="font-size: 35px; background-color: red; color: white; padding: 5px; margin: 5px;">SOLD OUT</span>
+                    </h1>
+                    {% endif %}
+
+                    <div class="item-name">{{ item.name }} | <span style="color:red;">{{ item.price }} ¥</span></div>
+                    <div class="item-quantity">Quantity: {{ item.quantity }}</div>
+
+                    <div class="item-category">
+                        <strong>Category:</strong> {{ item.category }}
+                        {% if item.category in ["Food", "Drink"] %}
+                        with expiration date: {{ item.expiration_date.date() }}
+                        {% endif %}
+                    </div>
+
+                    <div class="item-description"><strong>Description:</strong> {{ item.description }}</div>
+
+                    <div class="item-seller"><strong>Posted by</strong> {{ current_user.g_name }} -
+                        {% set time_since_post = (current_date.date() - item.publish_date.date()).days %}
+                        {% if time_since_post == 0 %}
+                        Today.
+                        {% else %}
+                        {{ time_since_post }} days ago.
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="img-block">
+                    <img class="profile-item-img" src="static/item_pics/{{ item.pic_file }}">
+                </div>
+
+            </div>
+            {% endfor %}
+
+        </div>
+        {% else %}
+        <h2>No items found.</h2>
+        {% endif %}
+    </div>
+
+    <div class="transaction-container">
+        <h1>Your transactions:</h1>
+        {% if transactions %}
+        <div class="user-transactions">
+            {% for transaction in transactions %}
+
+            {% set ns = namespace(seller=None, buyer=None, transaction_item=None) %}
+
+            {% for user in all_users %}
+            {% if user.id == transaction.seller_id %}
+            {% set ns.seller = user %}
+            {% endif %}
+            {% if user.id == transaction.buyer_id %}
+            {% set ns.buyer = user %}
+            {% endif %}
+            {% endfor %}
+
+            {% for item in all_items %}
+            {% if transaction.item_id == item.id %}
+            {% set ns.transaction_item = item %}
+            {% endif %}
+            {% endfor %}
+
+            <div class="transaction">
+                <div class="transaction-text">
+                    {% if ns.seller.id == current_user.id %}
+                    <div><span style="font-size: 35px; color: white; background-color: red; padding: 5px;">SOLD</span>
+                    </div>
+                    {% else %}
+                    <div><span
+                            style="font-size: 35px; color: white; background-color: green; padding: 5px;">BOUGHT</span>
+                    </div>
+                    {% endif %}
+
+                    <div class="transaction-item">{{ ns.transaction_item.name }} |
+                        <span style="color:red;">{{ ns.transaction_item.price }} ¥</span>
+                    </div>
+                    <div class="transaction-quantity">Quantity: {{ transaction.quantity }}</div>
+
+                    <div class="item-seller"><strong>Sold by</strong> {{ ns.seller.g_name }}</div>
+                    <div class="item-buyer"><strong>Bought by</strong> {{ ns.buyer.g_name }}</div>
+
+                    <div class="total-price"><strong>Total price:</strong> {{ ns.transaction_item.price *
+                        transaction.quantity }} ¥
+                    </div>
+
+                    <div class="buyer-message"><strong>Buyer message:</strong> {{ transaction.buyer_description }}</div>
+
+                    <div class="transaction-date">Transaction occurred on {{ transaction.transaction_date.date() }}
+                    </div>
+
+                </div>
+
+                <div class="img-block">
+                    <img class="profile-item-img" src="static/item_pics/{{ ns.transaction_item.pic_file }}">
+                </div>
+
+            </div>
+            {% endfor %}
+
+
+        </div>
+
+        {% else %}
+        <h2>No transactions found.</h2>
+        {% endif %}
+    </div>
+
+</div>
+
+<script>
+    document.querySelector(".transaction-container").style.display = "none";
+
+
+    function enablePosts() {
+        // Runs when "posts" button is pressed
+        let selection = document.querySelector(".post-container");
+        let selection_display = selection.style.display
+
+        // Checks if the block is not already visible
+        if (selection_display == "none") {
+            selection.style.display = "block"; // Renders posts
+
+            // Changes the appearance of the button pressed, indicating which page the user is on:
+            let button1 = document.getElementById("enable-posts-btn");
+            button1.style.transform = "scale(1.15)"
+            button1.style.backgroundColor = "grey"
+
+            // Hides the transaction container
+            document.querySelector(".transaction-container").style.display = "none";
+            let button2 = document.getElementById("enable-transactions-btn");
+            button2.style.transform = "none"
+            button2.style.backgroundColor = "lightgrey"
+
+        }
+    }
+
+    function enableTransactions() {
+        // Runs when "posts" button is pressed
+        let selection = document.querySelector(".transaction-container");
+        let selection_display = selection.style.display;
+
+        // Checks if the block is not already visible
+        if (selection_display == "none") {
+            selection.style.display = "block"; // Renders transactions
+
+            // Changes the appearance of the button pressed, indicating which page the user is on:
+            let button1 = document.getElementById("enable-transactions-btn");
+            button1.style.transform = "scale(1.15)"
+            button1.style.backgroundColor = "grey"
+
+            // Hides the posts container
+            document.querySelector(".post-container").style.display = "none";
+            let button2 = document.getElementById("enable-posts-btn");
+            button2.style.transform = "none"
+            button2.style.backgroundColor = "lightgrey"
+        }
+    }
+</script>
+
+{% endblock %}

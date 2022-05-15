@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title> {% block title %} {% endblock %} </title>
+    {% block stylesheet %}
+    <link rel="stylesheet" href="static/style.css">
+    {% endblock %}
+</head>
+<body>
+
+    <ul class="header">
+        <li id="title"><a href="{{ url_for("index") }}">ISAK Marketplace</a></li>
+        <li><a href="{{ url_for("sell") }}">Sell</a></li>
+
+
+        <div style="float:right">
+            {% if not google.authorized %}
+            <li><a class="" href="#">Not logged in.</a></li>
+            <li><a class="" href="{{ url_for('login') }}">Login</a></li>
+
+            {% else %}
+            <li><a class="" href="#">Logged in as: {{ current_user.g_name }}</a></li>
+            <li><a class="" href="{{ url_for('profile') }}">Profile</a></li>
+            <li><a class="" href="{{ url_for('logout') }}">Logout</a></li>
+            {% endif %}
+        </div>
+    </ul>
+
+
+    {% block content %}
+
+    {% endblock %}
+
+</body>
+</html>
+

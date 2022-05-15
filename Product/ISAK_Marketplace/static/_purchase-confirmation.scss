@@ -1,0 +1,25 @@
+
+.purchase-confirmation-page {
+  height: 90%;
+  width: 100%;
+  background-color: lightgreen;
+
+  text-align: center;
+  vertical-align: center;
+  padding-top: 20vh;
+
+  * {
+    padding: 20px;
+
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 40px;
+  }
+
+  div {
+    font-size: 20px;
+  }
+}
+

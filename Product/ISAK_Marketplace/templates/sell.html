@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %} Sell item {% endblock %}
+
+
+{% block stylesheet %}<link rel="stylesheet" href="static/styles.css">{% endblock %}
+
+
+{% block content %}
+<div class="sell-page">
+    <h1>Sell item</h1>
+
+    <form action="" method="post" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+
+        <div id="name-input">
+            {{ form.name.label }}<br>
+            {{ form.name(size=32) }}
+            {% for error in form.name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+        <div id="quantity-input">
+            {{ form.quantity.label }}<br>
+            {{ form.quantity(size=32) }}
+            {% for error in form.quantity.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+
+        <div id="price-input">
+            {{ form.price.label }}<br>
+            {{ form.price }}
+            {% for error in form.price.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+
+        <div id="category-input">
+            {{ form.category.label }}<br>
+            {{ form.category }}
+            {% for error in form.category.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+
+        <div id="expiration-date-input">
+            {{ form.expiration_date.label }}<br>
+            {{ form.expiration_date }}
+            {% for error in form.expiration_date.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+
+        <div id="description-input">
+            {{ form.description.label }}<br>
+            {{ form.description }}
+            {% for error in form.description.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+        <div id="picture-input">
+            {{ form.pic_file.label }}<br>
+            {{ form.pic_file(size=32) }}
+            {% for error in form.pic_file.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+
+        <div id="sell-form-submit">
+            <button onclick="location.href = '../'" style="background-color: lightcoral;">Cancel</button>
+            {{ form.submit() }}
+        </div>
+    </form>
+
+</div>
+
+
+<script>
+    document.getElementById("category").addEventListener("change", displayExpDate);
+
+    function displayExpDate() {
+        let radio_food = document.getElementById("category-0");
+        let radio_drink = document.getElementById("category-1");
+        if (radio_food.checked === true || radio_drink.checked === true) {
+            document.getElementById("expiration-date-input").style.display = "block";
+            document.getElementById("expiration_date").value = "";
+        } else {
+            document.getElementById("expiration-date-input").style.display = "none";
+            document.getElementById("expiration_date").value = "1900-01-01";
+        }
+    }
+</script>
+
+
+
+
+{% endblock %}
+
+
+
+

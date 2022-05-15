@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %} Purchase confirmation | ISAK Marketplace {% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="../static/styles.css">{% endblock %}
+
+{% block content %}
+
+<div class="purchase-confirmation-page">
+    <h1>Purchase confirmation</h1>
+    <div>Name of item: <strong>{{ item.name }}</strong></div>
+    <div>Quantity: <strong>{{ quantity }}</strong></div>
+    <div>Seller: <strong>{{ user.g_name }}</strong></div>
+    <div>Your description for the seller: <strong>{{ buyer_description }}</strong></div>
+
+</div>
+
+
+
+{% endblock %}
+

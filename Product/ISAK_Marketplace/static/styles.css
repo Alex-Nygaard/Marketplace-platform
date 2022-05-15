@@ -1,0 +1,387 @@
+#sort {
+  background-color: #fff;
+  font-size: 22px;
+}
+
+#search-form {
+  margin: 10px;
+}
+#search-form input {
+  font-size: 22px;
+}
+#search-form #sort {
+  background-color: #fff;
+  font-size: 22px;
+}
+#search-form #submit {
+  background-color: lightgreen;
+}
+
+#reset-btn {
+  display: inline-block;
+  font-size: 22px;
+  margin-left: 10px;
+  background-color: lightcoral;
+}
+
+.main-flex-container {
+  position: relative;
+  top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.main-flex-container div {
+  background-color: #f1f1f1;
+  width: 400px;
+  max-height: 500px;
+  overflow-y: scroll;
+  transition: all 0.2s ease-in;
+  margin: 10px;
+}
+.main-flex-container div:hover {
+  transform: scale(1.05);
+  opacity: 90%;
+}
+.main-flex-container div a {
+  text-decoration: none;
+  color: black;
+}
+.main-flex-container div a p {
+  margin: 10px;
+}
+.main-flex-container div a .main-img-block {
+  height: 300px;
+  margin: 0;
+  transform: none;
+}
+.main-flex-container div a .main-img-block img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+.main-flex-container div a .main-item-title {
+  position: relative;
+  text-align: center;
+  font-size: 30px;
+  margin: 10px;
+}
+.main-flex-container div a .main-item-quantity {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 0;
+}
+
+.sell-page {
+  margin: 20px;
+  height: 85vh;
+}
+.sell-page form {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: repeat(5, 20%);
+}
+.sell-page form div {
+  padding: 20px;
+}
+.sell-page form div label {
+  font-size: 25px;
+}
+.sell-page form div input, .sell-page form div button {
+  font-size: 16px;
+  width: 100%;
+  height: 2rem;
+}
+.sell-page form #name-input {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.sell-page form #quantity-input {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+.sell-page form #category-input {
+  grid-column: 1/2;
+  grid-row: 3/4;
+}
+.sell-page form #category-input ul {
+  background-color: white;
+}
+.sell-page form #category-input ul li {
+  text-align: center;
+}
+.sell-page form #category-input ul li input {
+  height: 20px;
+}
+.sell-page form #expiration-date-input {
+  grid-column: 1/2;
+  grid-row: 4/5;
+  display: none;
+}
+.sell-page form #price-input {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+.sell-page form #description-input {
+  grid-column: 2/3;
+  grid-row: 2/4;
+}
+.sell-page form #description-input input {
+  height: 80%;
+  width: 100%;
+  text-align: left;
+  vertical-align: top;
+}
+.sell-page form #picture-input {
+  grid-column: 2/3;
+  grid-row: 4/5;
+}
+.sell-page form #sell-form-submit {
+  grid-column: 1/3;
+  grid-row: 5/6;
+}
+.sell-page form #sell-form-submit * {
+  width: 49%;
+  display: inline-block;
+}
+.sell-page form #sell-form-submit input {
+  background-color: lightgreen;
+}
+
+.profile-page {
+  margin: 10px;
+}
+.profile-page .profile-info-block {
+  display: grid;
+  grid-template-columns: auto 96px;
+}
+.profile-page .display-selection {
+  text-align: center;
+}
+.profile-page .display-selection #enable-posts-btn {
+  background-color: grey;
+  transform: scale(1.15);
+}
+.profile-page .display-selection #enable-transactions-btn {
+  background-color: lightgrey;
+}
+.profile-page .display-selection button {
+  font-size: 16px;
+  width: 200px;
+  height: 50px;
+  margin: 20px;
+}
+.profile-page .post-container, .profile-page .transaction-container {
+  display: block;
+}
+.profile-page .post-container .user-posts, .profile-page .post-container .user-transactions, .profile-page .transaction-container .user-posts, .profile-page .transaction-container .user-transactions {
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.profile-page .post-container .user-posts .item, .profile-page .post-container .user-posts .transaction, .profile-page .post-container .user-transactions .item, .profile-page .post-container .user-transactions .transaction, .profile-page .transaction-container .user-posts .item, .profile-page .transaction-container .user-posts .transaction, .profile-page .transaction-container .user-transactions .item, .profile-page .transaction-container .user-transactions .transaction {
+  background-color: #f1f1f1;
+  margin: 10px;
+  display: grid;
+  width: 100%;
+  grid-template-columns: 60% 40%;
+  min-height: 250px;
+  max-height: 600px;
+  min-width: 710px;
+  overflow: hidden;
+}
+.profile-page .post-container .user-posts .item .item-text, .profile-page .post-container .user-posts .item .transaction-text, .profile-page .post-container .user-posts .transaction .item-text, .profile-page .post-container .user-posts .transaction .transaction-text, .profile-page .post-container .user-transactions .item .item-text, .profile-page .post-container .user-transactions .item .transaction-text, .profile-page .post-container .user-transactions .transaction .item-text, .profile-page .post-container .user-transactions .transaction .transaction-text, .profile-page .transaction-container .user-posts .item .item-text, .profile-page .transaction-container .user-posts .item .transaction-text, .profile-page .transaction-container .user-posts .transaction .item-text, .profile-page .transaction-container .user-posts .transaction .transaction-text, .profile-page .transaction-container .user-transactions .item .item-text, .profile-page .transaction-container .user-transactions .item .transaction-text, .profile-page .transaction-container .user-transactions .transaction .item-text, .profile-page .transaction-container .user-transactions .transaction .transaction-text {
+  grid-column: 1/2;
+  height: inherit;
+  width: inherit;
+}
+.profile-page .post-container .user-posts .item .item-text div, .profile-page .post-container .user-posts .item .transaction-text div, .profile-page .post-container .user-posts .transaction .item-text div, .profile-page .post-container .user-posts .transaction .transaction-text div, .profile-page .post-container .user-transactions .item .item-text div, .profile-page .post-container .user-transactions .item .transaction-text div, .profile-page .post-container .user-transactions .transaction .item-text div, .profile-page .post-container .user-transactions .transaction .transaction-text div, .profile-page .transaction-container .user-posts .item .item-text div, .profile-page .transaction-container .user-posts .item .transaction-text div, .profile-page .transaction-container .user-posts .transaction .item-text div, .profile-page .transaction-container .user-posts .transaction .transaction-text div, .profile-page .transaction-container .user-transactions .item .item-text div, .profile-page .transaction-container .user-transactions .item .transaction-text div, .profile-page .transaction-container .user-transactions .transaction .item-text div, .profile-page .transaction-container .user-transactions .transaction .transaction-text div {
+  margin: 15px;
+}
+.profile-page .post-container .user-posts .item .item-text .item-name, .profile-page .post-container .user-posts .item .item-text .transaction-item, .profile-page .post-container .user-posts .item .transaction-text .item-name, .profile-page .post-container .user-posts .item .transaction-text .transaction-item, .profile-page .post-container .user-posts .transaction .item-text .item-name, .profile-page .post-container .user-posts .transaction .item-text .transaction-item, .profile-page .post-container .user-posts .transaction .transaction-text .item-name, .profile-page .post-container .user-posts .transaction .transaction-text .transaction-item, .profile-page .post-container .user-transactions .item .item-text .item-name, .profile-page .post-container .user-transactions .item .item-text .transaction-item, .profile-page .post-container .user-transactions .item .transaction-text .item-name, .profile-page .post-container .user-transactions .item .transaction-text .transaction-item, .profile-page .post-container .user-transactions .transaction .item-text .item-name, .profile-page .post-container .user-transactions .transaction .item-text .transaction-item, .profile-page .post-container .user-transactions .transaction .transaction-text .item-name, .profile-page .post-container .user-transactions .transaction .transaction-text .transaction-item, .profile-page .transaction-container .user-posts .item .item-text .item-name, .profile-page .transaction-container .user-posts .item .item-text .transaction-item, .profile-page .transaction-container .user-posts .item .transaction-text .item-name, .profile-page .transaction-container .user-posts .item .transaction-text .transaction-item, .profile-page .transaction-container .user-posts .transaction .item-text .item-name, .profile-page .transaction-container .user-posts .transaction .item-text .transaction-item, .profile-page .transaction-container .user-posts .transaction .transaction-text .item-name, .profile-page .transaction-container .user-posts .transaction .transaction-text .transaction-item, .profile-page .transaction-container .user-transactions .item .item-text .item-name, .profile-page .transaction-container .user-transactions .item .item-text .transaction-item, .profile-page .transaction-container .user-transactions .item .transaction-text .item-name, .profile-page .transaction-container .user-transactions .item .transaction-text .transaction-item, .profile-page .transaction-container .user-transactions .transaction .item-text .item-name, .profile-page .transaction-container .user-transactions .transaction .item-text .transaction-item, .profile-page .transaction-container .user-transactions .transaction .transaction-text .item-name, .profile-page .transaction-container .user-transactions .transaction .transaction-text .transaction-item {
+  font-size: 30px;
+  display: inline-block;
+}
+.profile-page .post-container .user-posts .item .item-text .item-quantity, .profile-page .post-container .user-posts .item .item-text .transaction-quantity, .profile-page .post-container .user-posts .item .transaction-text .item-quantity, .profile-page .post-container .user-posts .item .transaction-text .transaction-quantity, .profile-page .post-container .user-posts .transaction .item-text .item-quantity, .profile-page .post-container .user-posts .transaction .item-text .transaction-quantity, .profile-page .post-container .user-posts .transaction .transaction-text .item-quantity, .profile-page .post-container .user-posts .transaction .transaction-text .transaction-quantity, .profile-page .post-container .user-transactions .item .item-text .item-quantity, .profile-page .post-container .user-transactions .item .item-text .transaction-quantity, .profile-page .post-container .user-transactions .item .transaction-text .item-quantity, .profile-page .post-container .user-transactions .item .transaction-text .transaction-quantity, .profile-page .post-container .user-transactions .transaction .item-text .item-quantity, .profile-page .post-container .user-transactions .transaction .item-text .transaction-quantity, .profile-page .post-container .user-transactions .transaction .transaction-text .item-quantity, .profile-page .post-container .user-transactions .transaction .transaction-text .transaction-quantity, .profile-page .transaction-container .user-posts .item .item-text .item-quantity, .profile-page .transaction-container .user-posts .item .item-text .transaction-quantity, .profile-page .transaction-container .user-posts .item .transaction-text .item-quantity, .profile-page .transaction-container .user-posts .item .transaction-text .transaction-quantity, .profile-page .transaction-container .user-posts .transaction .item-text .item-quantity, .profile-page .transaction-container .user-posts .transaction .item-text .transaction-quantity, .profile-page .transaction-container .user-posts .transaction .transaction-text .item-quantity, .profile-page .transaction-container .user-posts .transaction .transaction-text .transaction-quantity, .profile-page .transaction-container .user-transactions .item .item-text .item-quantity, .profile-page .transaction-container .user-transactions .item .item-text .transaction-quantity, .profile-page .transaction-container .user-transactions .item .transaction-text .item-quantity, .profile-page .transaction-container .user-transactions .item .transaction-text .transaction-quantity, .profile-page .transaction-container .user-transactions .transaction .item-text .item-quantity, .profile-page .transaction-container .user-transactions .transaction .item-text .transaction-quantity, .profile-page .transaction-container .user-transactions .transaction .transaction-text .item-quantity, .profile-page .transaction-container .user-transactions .transaction .transaction-text .transaction-quantity {
+  font-size: 25px;
+  display: inline-block;
+  float: right;
+  padding-right: 20px;
+}
+.profile-page .post-container .user-posts .item .img-block, .profile-page .post-container .user-posts .transaction .img-block, .profile-page .post-container .user-transactions .item .img-block, .profile-page .post-container .user-transactions .transaction .img-block, .profile-page .transaction-container .user-posts .item .img-block, .profile-page .transaction-container .user-posts .transaction .img-block, .profile-page .transaction-container .user-transactions .item .img-block, .profile-page .transaction-container .user-transactions .transaction .img-block {
+  grid-column: 2/3;
+  height: inherit;
+  width: inherit;
+}
+.profile-page .post-container .user-posts .item .img-block img, .profile-page .post-container .user-posts .transaction .img-block img, .profile-page .post-container .user-transactions .item .img-block img, .profile-page .post-container .user-transactions .transaction .img-block img, .profile-page .transaction-container .user-posts .item .img-block img, .profile-page .transaction-container .user-posts .transaction .img-block img, .profile-page .transaction-container .user-transactions .item .img-block img, .profile-page .transaction-container .user-transactions .transaction .img-block img {
+  min-height: 100px;
+  max-height: 300px;
+  width: inherit;
+  object-fit: cover;
+}
+
+.item-page {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 50vw 50vw;
+  grid-template-rows: 70vh 20vh;
+  min-height: 200px;
+  min-width: 200px;
+}
+.item-page .item-text {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  overflow: scroll;
+}
+.item-page .item-text div {
+  margin: 10px;
+  font-size: 20px;
+}
+.item-page .item-text .item-title {
+  position: relative;
+  text-align: center;
+  font-size: 30px;
+  margin: 10px;
+}
+.item-page .item-text .item-quantity {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 0;
+}
+.item-page .item-img {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  background-color: lightcoral;
+}
+.item-page .item-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.item-page .item-buttons {
+  position: relative;
+  grid-column: 1/3;
+  grid-row: 2/3;
+  min-height: 100px;
+  text-align: center;
+}
+.item-page .item-buttons .button-container button {
+  margin: 10px;
+  border-radius: 5px;
+  font-size: 30px;
+  padding: 10px;
+  width: 200px;
+}
+.item-page #purchase-overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+.item-page #purchase-overlay #purchase-box {
+  position: absolute;
+  height: 300px;
+  width: 400px;
+  top: 50%;
+  left: 50%;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  border-radius: 5px;
+  padding: 10px;
+}
+.item-page #purchase-overlay #purchase-box * {
+  line-height: 25px;
+}
+.item-page #purchase-overlay #purchase-box h1 {
+  text-align: center;
+}
+.item-page #purchase-overlay #purchase-box form #quantity-selection {
+  font-size: 25px;
+}
+.item-page #purchase-overlay #purchase-box form #dynamic_quantity {
+  font-size: 17px;
+}
+.item-page #purchase-overlay #purchase-box form #purchase-total-price {
+  font-size: 25px;
+}
+.item-page #purchase-overlay #purchase-box form #buyer-description {
+  padding-top: 5px;
+  font-size: 20px;
+}
+.item-page #purchase-overlay #purchase-box form #purchase-btn {
+  text-align: center;
+  bottom: 10px;
+  display: inline-block;
+  font-size: 20px;
+  padding: 5px;
+}
+.item-page #purchase-overlay #purchase-box form #purchase-btn input {
+  background-color: lightgreen;
+  width: 100px;
+}
+.item-page #purchase-overlay #purchase-box #cancel-purchase {
+  font-size: 15px;
+  width: 100px;
+  margin-left: 5px;
+}
+
+.purchase-confirmation-page {
+  height: 90%;
+  width: 100%;
+  background-color: lightgreen;
+  text-align: center;
+  vertical-align: center;
+  padding-top: 20vh;
+}
+.purchase-confirmation-page * {
+  padding: 20px;
+}
+.purchase-confirmation-page h1 {
+  margin: 0;
+  font-size: 40px;
+}
+.purchase-confirmation-page div {
+  font-size: 20px;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  min-width: 745px;
+}
+li {
+  float: left;
+}
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+/*# sourceMappingURL=styles.css.map */

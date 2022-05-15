@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %} Marketplace {% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="static/styles.css">{% endblock %}
+
+{% block content %}
+
+{% if google.authorized %}
+    <h1 style="margin: 10px;">Welcome, {{ current_user.g_name }}!</h1>
+{% else %}
+    <h1 style="margin: 10px;">Welcome!</h1>
+{% endif %}
+
+<form id="search-form" action="" method="post">
+    {{ form.hidden_tag() }}
+    {{ form.search_term(size=32) }}
+    {{ form.sort }}
+    {{ form.category }}
+    <br>
+    <br>
+    {{ form.submit() }}
+
+</form>
+<button id="reset-btn" onclick="location.href = '/'">Reset</button>
+
+{% if items %}
+<div class="main-flex-container">
+
+    {% for item in items %}
+        {% if item.quantity != 0 %}
+        {% if category == item.category or category == "All" %}
+        <div class="main-item-block">
+            <a href="/item/{{ item.id }}">
+                <div class="main-img-block">
+                    <img class="main-item-img" src="static/item_pics/{{ item.pic_file }}">
+                </div>
+                <p class="main-item-title"> {{ item.name }} | <span style="color:red;">{{ item.price }} ¥</span></p>
+                <p class="main-item-quantity">Quantity: {{ item.quantity }}</p>
+                <p class="main-item-category"><strong>Category:</strong> {{ item.category }}
+                    {% if item.category in ["Food", "Drink"] %}
+                    with expiration date: {{ item.expiration_date.date() }}
+                    {% endif %}
+                </p>
+
+                <p class="main-item-description"><strong>Description:</strong> {{ item.description }}</p>
+
+                {% for user in users if user.id == item.user_id %}
+                    <p class="main-item-seller"><strong>Posted by</strong> {{ user.g_name }} -
+
+                        {% set time_since_post = (current_date.date() - item.publish_date.date()).days %}
+                        {% if time_since_post == 0 %}
+                            Today.
+                        {% else %}
+                            {{ time_since_post }} days ago.
+                        {% endif %}
+                    </p>
+                {% endfor %}
+            </a>
+        </div>
+        {% endif %}
+        {% endif %}
+    {% endfor %}
+
+</div>
+{% else %}
+    <h1>No items found :(</h1>
+
+{% endif %}
+
+{% endblock %}

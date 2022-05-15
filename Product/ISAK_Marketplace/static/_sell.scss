@@ -1,0 +1,80 @@
+
+.sell-page {
+  margin: 20px;
+  height: 85vh;
+  form {
+    display: grid;
+    height: 100%;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: repeat(5, 20%);
+    div {
+      padding: 20px;
+      label {
+        font-size: 25px;
+      }
+      input, button {
+        font-size: 16px;
+        width: 100%;
+        height: 2rem;
+      }
+    }
+
+    #name-input {
+      grid-column: 1/2;
+      grid-row: 1/2;
+    }
+    #quantity-input {
+      grid-column: 1/2;
+      grid-row: 2/3;
+    }
+    #category-input {
+      grid-column: 1/2;
+      grid-row: 3/4;
+      ul {
+        background-color: white;
+        li {
+          text-align: center;
+          input {
+            height: 20px;
+          }
+        }
+      }
+    }
+    #expiration-date-input {
+      grid-column: 1/2;
+      grid-row: 4/5;
+      display: none;
+    }
+    #price-input {
+      grid-column: 2/3;
+      grid-row: 1/2;
+    }
+    #description-input {
+      grid-column: 2/3;
+      grid-row: 2/4;
+      input {
+        height: 80%;
+        width: 100%;
+        text-align: left;
+        vertical-align: top;
+      }
+    }
+    #picture-input {
+      grid-column: 2/3;
+      grid-row: 4/5;
+    }
+    #sell-form-submit {
+      grid-column: 1/3;
+      grid-row: 5/6;
+      * {
+        width: 49%;
+        display: inline-block;
+      }
+      input {
+        background-color: lightgreen;
+      }
+    }
+
+  }
+}
+

@@ -1,0 +1,86 @@
+
+.profile-page {
+  margin: 10px;
+
+  .profile-info-block {
+    display: grid;
+    grid-template-columns: auto 96px;
+  }
+
+  .display-selection {
+    text-align: center;
+
+    #enable-posts-btn {
+      background-color: grey;
+      transform: scale(1.15);
+    }
+
+    #enable-transactions-btn {
+      background-color: lightgrey;
+    }
+
+    button {
+      font-size: 16px;
+      width: 200px;
+      height: 50px;
+      margin: 20px;
+    }
+  }
+
+  .post-container, .transaction-container {
+    display: block;
+    .user-posts, .user-transactions {
+      position: relative;
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap;
+
+      .item, .transaction {
+        background-color: #f1f1f1;
+        margin: 10px;
+        display: grid;
+        width: 100%;
+        grid-template-columns: 60% 40%;
+        min-height: 250px;
+        max-height: 600px;
+        min-width: 710px;
+        overflow: hidden;
+
+        .item-text, .transaction-text {
+          grid-column: 1/2;
+          height: inherit;
+          width: inherit;
+
+          div {
+            margin: 15px;
+          }
+
+          .item-name, .transaction-item {
+            font-size: 30px;
+            display: inline-block;
+          }
+
+          .item-quantity, .transaction-quantity {
+            font-size: 25px;
+            display: inline-block;
+            float: right;
+            padding-right: 20px;
+          }
+        }
+
+        .img-block {
+          grid-column: 2/3;
+          height: inherit;
+          width: inherit;
+
+          img {
+            min-height: 100px;
+            max-height: 300px;
+            width: inherit;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+}
